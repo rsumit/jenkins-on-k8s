@@ -1,0 +1,10 @@
+- name: install local jenkins on K8s (macos)
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: start minikube
+      command: minikube start --vm-driver=virtualbox
+    - name: Run master pod
+      command: kubectl create -f jenkins.yml
+    - name: Run service pod
+      command: kubectl create -f jenkins-service.yml
